@@ -1,0 +1,15 @@
+# Base do CS-433 — Projeto 1 permite apenas numpy (+ matplotlib para plots).
+numpy>=1.26
+matplotlib>=3.8
+
+# Ferramentas de trabalho
+jupyterlab>=4.0
+pytest>=8.0
+ruff>=0.5
+black>=24.0
+
+# Projeto 2 (o Projeto 1 é restrito — confirmar na descrição oficial)
+# scikit-learn>=1.5
+# pandas>=2.2
+# scipy>=1.13
+# torch>=2.3

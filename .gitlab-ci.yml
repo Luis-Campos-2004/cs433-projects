@@ -1,0 +1,8 @@
+# Equivalente do CI para gitlab.epfl.ch (ignorado se usares GitHub).
+image: python:3.11
+
+check:
+  script:
+    - pip install -r requirements.txt
+    - ruff check .
+    - pytest -q

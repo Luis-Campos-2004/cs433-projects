@@ -1,0 +1,55 @@
+# --- Dados (nunca versionar datasets do curso) ---
+data/
+!data/.gitkeep
+*.csv
+*.csv.zip
+*.npy
+*.npz
+*.h5
+*.parquet
+*.pkl
+
+# --- Submissões e modelos ---
+submissions/
+*submission*.csv
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.joblib
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# --- Notebooks ---
+.ipynb_checkpoints/
+
+# --- LaTeX ---
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.toc
+
+# --- Sistema / editores ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# --- Segredos ---
+.env
+*.key
