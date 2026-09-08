@@ -1,7 +1,7 @@
-"""Pipeline de ponta a ponta: dados -> modelo -> ficheiro de submissão.
+"""End-to-end pipeline: data -> model -> submission file.
 
-Regra de ouro: se isto não corre num clone limpo do repo, a submissão não é
-reprodutível. Os notebooks servem para explorar; o run.py é a verdade.
+Golden rule: if this doesn't run on a clean clone of the repo, the submission
+isn't reproducible. Notebooks are for exploring; run.py is the source of truth.
 """
 
 import sys
@@ -19,17 +19,17 @@ SEED = 42
 
 
 def load_data():
-    """TODO: carregar train/test a partir de DATA."""
+    """TODO: load train/test from DATA."""
     raise NotImplementedError
 
 
 def preprocess(x_train, x_test):
-    """TODO: tratar NaNs, standardizar (estatísticas do TREINO), expandir features."""
+    """TODO: handle NaNs, standardize (using TRAIN statistics), expand features."""
     raise NotImplementedError
 
 
 def train(y, tx):
-    """TODO: escolher modelo + hiperparâmetros por cross-validation."""
+    """TODO: pick model + hyperparameters via cross-validation."""
     raise NotImplementedError
 
 
@@ -50,7 +50,7 @@ def main():
         header="Id,Prediction",
         comments="",
     )
-    print(f"escrito: {OUT / 'submission.csv'}")
+    print(f"written: {OUT / 'submission.csv'}")
 
 
 if __name__ == "__main__":

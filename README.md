@@ -1,34 +1,35 @@
-# CS-433 — Projetos (equipa)
+# CS-433 — Projects (team repo)
 
-Repositório **partilhado pelos três**. Privado.
+Shared by the three of us. Private.
 
-| | Peso | Prazo |
+| | Weight | Due |
 |---|---|---|
-| Projeto 1 | 10% | 31 Out |
-| Projeto 2 | 30% | 18 Dez |
+| Project 1 | 10% | 31 Oct |
+| Project 2 | 30% | 18 Dec |
 
-## Estrutura
+## Layout
 
 ```
 projects/project1/
-├── data/          # NÃO versionado
-├── src/           # código: funções puras, testáveis
-├── notebooks/     # exploração — a lógica não vive aqui
-├── tests/         # testes unitários
-├── report/        # relatório LaTeX
-└── run.py         # reproduz a submissão de uma vez
+├── data/          # NOT versioned
+├── src/           # code: pure, testable functions
+├── notebooks/     # exploration — logic doesn't live here
+├── tests/         # unit tests
+├── report/        # LaTeX report
+└── run.py         # reproduces the submission in one go
 ```
 
-## Arranque (cada pessoa faz isto uma vez)
+## Setup (once per person)
 
 ```bash
-git clone <url-do-repo>
-cd cs433-projetos
+git clone <repo-url>
+cd cs433-projects
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+pytest -q                        # 5 tests should pass
 ```
 
-## Regras
+## Rules
 
-Ver `CONTRIBUTING.md`. Lê antes do primeiro commit.
+See `CONTRIBUTING.md`. Read it before your first commit.

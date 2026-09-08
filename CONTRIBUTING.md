@@ -1,65 +1,76 @@
-# Como trabalhamos (combinar entre os três)
+# How we work
 
-## As cinco regras
+## The five rules
 
-1. **A `main` está sempre a funcionar.** Ninguém commita direto na `main`.
-2. **Uma branch por tarefa.** `feat/ridge-regression`, `fix/data-split`, `report/intro`.
-3. **Pull Request + 1 revisão** antes de fazer merge.
-4. **Dados nunca entram no git.** Ficam em `data/`, que está no `.gitignore`.
-5. **`pytest -q` verde** antes de abrir o PR.
+1. **`main` always works.** Nobody commits directly to `main`.
+2. **One branch per task.** `feat/ridge-regression`, `fix/data-split`, `report/intro`.
+3. **Pull request + 1 review** before merging.
+4. **Data never goes into git.** It lives in `data/`, which is gitignored.
+5. **`pytest -q` green** before opening the PR.
 
-## O ciclo, sempre igual
+## The cycle, always the same
 
 ```bash
-git checkout main          # 1. voltar à main
-git pull                   # 2. trazer o trabalho dos outros
-git checkout -b feat/nome  # 3. criar a minha branch
-# ... trabalhar ...
+git checkout main          # 1. back to the trunk
+git pull                   # 2. fetch everyone else's work
+git checkout -b feat/name  # 3. my own branch
+# ... work ...
+pytest -q
 git add .
 git commit -m "add cross-validation for ridge"
-git push -u origin feat/nome
-# 4. abrir o Pull Request no site do GitHub
+git push -u origin feat/name
+gh pr create --fill        # 4. ask for review
 ```
 
-Depois do merge, apagar a branch e recomeçar do passo 1.
+After the merge, delete the branch and start again from step 1.
 
-## Divisão de trabalho
+## What each command does
 
-Para não haver conflitos, cada pessoa fica dona de ficheiros diferentes.
-Exemplo para o Projeto 1:
-
-| Pessoa | Responsável por |
+| Command | In plain words |
 |---|---|
-| A | `src/implementations.py` + `tests/` |
-| B | `src/preprocessing.py` + feature engineering |
-| C | `src/cross_validation.py` + `run.py` |
+| `git pull` | download what the others did |
+| `git checkout -b name` | make a copy where I can break things safely |
+| `git add .` | mark what I want to save |
+| `git commit -m "..."` | take a snapshot of the work |
+| `git push` | send it to the cloud |
+| `gh pr create` | ask someone to check it before it goes official |
 
-O relatório escreve-se no fim, em Overleaf, e só o PDF final entra no repo.
+## Splitting the work
 
-## Se der conflito
+To avoid conflicts, each person owns different files.
+Fill this in at the first meeting:
 
-Não entres em pânico e não apagues nada:
+| Person | Owns |
+|---|---|
+| | `src/implementations.py` and `tests/` |
+| | `src/preprocessing.py` and feature engineering |
+| | `src/cross_validation.py` and `run.py` |
+
+The report gets written in Overleaf. Only the final PDF goes in the repo.
+
+## When you hit a conflict
+
+Don't panic and don't delete anything:
 
 ```bash
-git status                 # mostra que ficheiros estão em conflito
+git status                 # shows which files are conflicted
 ```
 
-Abre o ficheiro. Vais ver marcas assim:
+Open the file. You'll see markers like:
 
 ```
 <<<<<<< HEAD
-o meu código
+my code
 =======
-o código da outra pessoa
+the other person's code
 >>>>>>> main
 ```
 
-Escolhe o que fica (às vezes é uma mistura dos dois), apaga as três linhas de
-marcas, e depois:
+Pick what stays (sometimes a mix of both), delete the three marker lines, then:
 
 ```bash
-git add <ficheiro>
+git add <file>
 git commit
 ```
 
-Se estiver mesmo mau: `git merge --abort` desfaz tudo e voltas ao início.
+If it's really bad: `git merge --abort` undoes everything and puts you back.

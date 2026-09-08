@@ -1,32 +1,32 @@
-"""As seis funções obrigatórias do Projeto 1 do CS-433.
+"""The six mandatory functions for CS-433 Project 1.
 
-Assinaturas e valores de retorno seguem o formato pedido habitualmente:
-cada função devolve `(w, loss)`, em que `loss` é a perda calculada com o `w`
-FINAL. Confirma os nomes exatos na descrição oficial deste ano antes de
-submeter — a grelha de correção é automática e não perdoa typos.
+Signatures and return values follow the usual required format: each function
+returns `(w, loss)`, where `loss` is computed with the FINAL `w`. Check the
+exact names against this year's official handout before submitting — grading
+is automated and does not forgive typos.
 
-Restrição típica do Projeto 1: só numpy. Nada de scikit-learn.
+Usual Project 1 constraint: numpy only. No scikit-learn.
 """
 
 import numpy as np
 
-# ---------------------------------------------------------------- perdas
+# ----------------------------------------------------------------- losses
 
 
 def compute_mse(y, tx, w):
-    """Perda de erro quadrático médio: 1/(2N) * sum(e^2)."""
+    """Mean squared error loss: 1/(2N) * sum(e^2)."""
     e = y - tx @ w
     return 0.5 * np.mean(e**2)
 
 
 def compute_gradient_mse(y, tx, w):
-    """Gradiente do MSE."""
+    """Gradient of the MSE."""
     e = y - tx @ w
     return -tx.T @ e / len(y)
 
 
 def sigmoid(t):
-    """Sigmoide numericamente estável (sem overflow para |t| grande)."""
+    """Numerically stable sigmoid (no overflow for large |t|)."""
     t = np.asarray(t, dtype=float)
     out = np.empty_like(t)
     pos = t >= 0
@@ -37,21 +37,21 @@ def sigmoid(t):
 
 
 def compute_logistic_loss(y, tx, w):
-    """Log-verosimilhança negativa média. Espera y em {0, 1}."""
+    """Mean negative log-likelihood. Expects y in {0, 1}."""
     z = tx @ w
     return np.mean(np.logaddexp(0, z) - y * z)
 
 
 def compute_logistic_gradient(y, tx, w):
-    """Gradiente da perda logística."""
+    """Gradient of the logistic loss."""
     return tx.T @ (sigmoid(tx @ w) - y) / len(y)
 
 
-# ------------------------------------------------- funções obrigatórias
+# --------------------------------------------------- mandatory functions
 
 
 def mean_squared_error_gd(y, tx, initial_w, max_iters, gamma):
-    """Regressão linear por gradiente descendente."""
+    """Linear regression using gradient descent."""
     w = initial_w
     for _ in range(max_iters):
         w = w - gamma * compute_gradient_mse(y, tx, w)
@@ -59,7 +59,7 @@ def mean_squared_error_gd(y, tx, initial_w, max_iters, gamma):
 
 
 def mean_squared_error_sgd(y, tx, initial_w, max_iters, gamma):
-    """Regressão linear por SGD com batch de tamanho 1."""
+    """Linear regression using SGD with batch size 1."""
     w = initial_w
     for _ in range(max_iters):
         i = np.random.randint(len(y))
@@ -69,7 +69,7 @@ def mean_squared_error_sgd(y, tx, initial_w, max_iters, gamma):
 
 
 def least_squares(y, tx):
-    """Solução exata das equações normais."""
+    """Exact solution via the normal equations."""
     a = tx.T @ tx
     b = tx.T @ y
     w = np.linalg.solve(a, b)
@@ -77,7 +77,7 @@ def least_squares(y, tx):
 
 
 def ridge_regression(y, tx, lambda_):
-    """Regressão ridge por equações normais."""
+    """Ridge regression via the normal equations."""
     n, d = tx.shape
     a = tx.T @ tx + 2 * n * lambda_ * np.eye(d)
     b = tx.T @ y
@@ -86,7 +86,7 @@ def ridge_regression(y, tx, lambda_):
 
 
 def logistic_regression(y, tx, initial_w, max_iters, gamma):
-    """Regressão logística por gradiente descendente. y em {0, 1}."""
+    """Logistic regression using gradient descent. y in {0, 1}."""
     w = initial_w
     for _ in range(max_iters):
         w = w - gamma * compute_logistic_gradient(y, tx, w)
@@ -94,8 +94,8 @@ def logistic_regression(y, tx, initial_w, max_iters, gamma):
 
 
 def reg_logistic_regression(y, tx, lambda_, initial_w, max_iters, gamma):
-    """Regressão logística regularizada (L2). A perda devolvida NÃO inclui
-    o termo de penalização — atenção a este detalhe, é onde toda a gente cai."""
+    """L2-regularized logistic regression. The returned loss does NOT include
+    the penalty term — watch out, this is where everyone slips up."""
     w = initial_w
     for _ in range(max_iters):
         grad = compute_logistic_gradient(y, tx, w) + 2 * lambda_ * w

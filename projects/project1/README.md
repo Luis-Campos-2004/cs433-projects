@@ -1,22 +1,22 @@
-# Projeto 1 — 10%, entrega 31 Out
+# Project 1 — 10%, due 31 Oct
 
-Grupo de 3. Só numpy (confirmar na descrição oficial).
+Group of 3. numpy only (confirm against the official handout).
 
 ## Checklist
 
-- [ ] Ler a descrição oficial do projeto de fim a fim
-- [ ] Criar o repo de equipa (GitHub Classroom, se for esse o caminho deste ano)
-- [ ] Colocar os dados em `data/` (não versionados)
-- [ ] `src/implementations.py` com as 6 funções e as assinaturas exatas
-- [ ] EDA + feature engineering em `notebooks/`
-- [ ] Cross-validation para escolher hiperparâmetros
-- [ ] `run.py` gera a submissão do zero, de forma reprodutível
-- [ ] Relatório: 2 páginas (confirmar limite), formato IEEE
-- [ ] `pytest -q` verde antes de submeter
+- [ ] Read the official project description end to end
+- [ ] Create the team submission repo (GitHub Classroom, if that's this year's route)
+- [ ] Put the data in `data/` (not versioned)
+- [ ] `src/implementations.py` with the 6 functions and their exact signatures
+- [ ] EDA + feature engineering in `notebooks/`
+- [ ] Cross-validation to pick hyperparameters
+- [ ] `run.py` regenerates the submission from scratch, reproducibly
+- [ ] Report: 2 pages (confirm the limit), IEEE format
+- [ ] `pytest -q` green before submitting
 
-## Reproduzir
+## Reproduce
 
 ```bash
 cd projects/project1
-python run.py          # escreve submissions/submission.csv
+python run.py          # writes submissions/submission.csv
 ```

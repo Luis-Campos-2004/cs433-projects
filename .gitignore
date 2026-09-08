@@ -1,4 +1,4 @@
-# --- Dados (nunca versionar datasets do curso) ---
+# --- Data (never version course datasets) ---
 data/
 !data/.gitkeep
 *.csv
@@ -9,7 +9,7 @@ data/
 *.parquet
 *.pkl
 
-# --- Submissões e modelos ---
+# --- Submissions and models ---
 submissions/
 *submission*.csv
 checkpoints/
@@ -43,13 +43,13 @@ env/
 *.fls
 *.toc
 
-# --- Sistema / editores ---
+# --- OS / editors ---
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
 *.swp
 
-# --- Segredos ---
+# --- Secrets ---
 .env
 *.key

@@ -1,4 +1,4 @@
-"""Testes de sanidade. Corre com `pytest -q` na raiz do repo."""
+"""Sanity tests. Run with `pytest -q` from the repo root."""
 
 import sys
 from pathlib import Path

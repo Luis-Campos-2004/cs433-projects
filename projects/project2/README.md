@@ -1,12 +1,12 @@
-# Projeto 2 — 30%, entrega 18 Dez
+# Project 2 — 30%, due 18 Dec
 
-Grupo de 3. Tema à escolha (ou ML4Science com um laboratório da EPFL).
+Group of 3. Topic of your choice (or ML4Science with an EPFL lab).
 
 ## Checklist
 
-- [ ] Escolher tema cedo — a escolha custa mais tempo do que se pensa
-- [ ] Definir a métrica e a baseline na primeira semana
-- [ ] Registar todas as experiências (tabela: config -> resultado)
-- [ ] `run.py` reprodutível a partir de um clone limpo
-- [ ] Relatório de 4 páginas, formato IEEE
-- [ ] README com instruções de execução para os assistentes
+- [ ] Pick a topic early — choosing eats more time than you expect
+- [ ] Define the metric and the baseline in week one
+- [ ] Log every experiment (table: config -> result)
+- [ ] `run.py` reproducible from a clean clone
+- [ ] 4-page report, IEEE format
+- [ ] README with run instructions for the TAs
