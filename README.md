@@ -4,7 +4,7 @@ Shared by the three of us. Private.
 
 | | Weight | Due |
 |---|---|---|
-| Project 1 | 10% | 31 Oct |
+| Project 1 | 0% | 29 Oct |
 | Project 2 | 30% | 18 Dec |
 
 ## Layout
