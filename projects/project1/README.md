@@ -1,4 +1,4 @@
-# Project 1 — 10%, due 31 Oct
+# Project 1 — NOT graded, due 29 Oct
 
 Group of 3. numpy only (confirm against the official handout).
 
