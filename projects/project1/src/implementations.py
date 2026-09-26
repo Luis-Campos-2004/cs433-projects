@@ -10,7 +10,7 @@ Usual Project 1 constraint: numpy only. No scikit-learn.
 
 import numpy as np
 
-# ----------------------------------------------------------------- losses
+#  losses
 
 
 def compute_mse(y, tx, w):
@@ -47,7 +47,7 @@ def compute_logistic_gradient(y, tx, w):
     return tx.T @ (sigmoid(tx @ w) - y) / len(y)
 
 
-# --------------------------------------------------- mandatory functions
+#  mandatory functions
 
 
 def mean_squared_error_gd(y, tx, initial_w, max_iters, gamma):
