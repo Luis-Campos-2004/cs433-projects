@@ -16,7 +16,6 @@ Usage, from projects/project1/:
 from pathlib import Path
 
 import numpy as np
-
 from helpers import create_csv_submission, load_csv_data
 from implementations import sigmoid
 from model import apply_preprocessing, fit_preprocessing, train

@@ -5,7 +5,7 @@ import numpy as np
 
 # implementations.py lives in the src folder next to this file
 sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
-from implementations import reg_logistic_regression  # noqa: E402
+from implementations import reg_logistic_regression
 
 # Hyperparameters (GAMMA must stay below ~0.39)
 LAMBDA = 1e-4
