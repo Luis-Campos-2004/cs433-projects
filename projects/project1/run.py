@@ -13,13 +13,13 @@ Usage, from projects/project1/:
     python run.py
 """
 
-import warnings
 from pathlib import Path
 
 import numpy as np
 
 from helpers import create_csv_submission, load_csv_data
-from implementations import reg_logistic_regression, sigmoid
+from implementations import sigmoid
+from model import apply_preprocessing, fit_preprocessing, train
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
@@ -27,28 +27,6 @@ OUT = ROOT / "submissions"
 
 SEED = 42
 VAL_FRACTION = 0.2
-LAMBDA = 1e-4
-GAMMA = 0.2
-MAX_ITERS = 500
-
-
-def fit_preprocessing(x):
-    """Learn the preprocessing parameters (column mask, mean, std) on x."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", RuntimeWarning)  # all-NaN columns
-        mean = np.nanmean(x, axis=0)
-        std = np.nanstd(x, axis=0)
-    keep = ~np.isnan(mean) & (std > 1e-8)
-    return keep, mean[keep], std[keep]
-
-
-def apply_preprocessing(x, params):
-    """Apply fitted parameters: select columns, impute, standardize, add bias."""
-    keep, mean, std = params
-    x = x[:, keep]
-    x = np.where(np.isnan(x), mean, x)
-    x = (x - mean) / std
-    return np.c_[np.ones(len(x)), x]
 
 
 def f1_score(y_true, y_pred):
@@ -65,13 +43,6 @@ def best_threshold(y_true, probs):
     scores = [f1_score(y_true, (probs >= t).astype(int)) for t in thresholds]
     i = int(np.argmax(scores))
     return thresholds[i], scores[i]
-
-
-def train(y, tx):
-    """Regularized logistic regression with the hyperparameters above."""
-    w0 = np.zeros(tx.shape[1])
-    w, _ = reg_logistic_regression(y, tx, LAMBDA, w0, MAX_ITERS, GAMMA)
-    return w
 
 
 def main():
