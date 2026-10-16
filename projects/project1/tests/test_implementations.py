@@ -6,9 +6,9 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from implementations import (  # noqa: E402
+from implementations import (
     least_squares,
     logistic_regression,
     mean_squared_error_gd,
