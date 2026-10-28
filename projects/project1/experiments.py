@@ -59,6 +59,9 @@ TARGET_CORR_MIN = 0.01  # feature selection threshold (as in the EDA notebook)
 
 # Preprocessing variants: prep_fit(x, y) -> (params, tx), prep_apply(x, params)
 
+def header_and_data():
+    x, _, y_pm1, _, _ = load_csv_data(DATA)
+    return x, (y_pm1 == 1).astype(float), load_feature_names(DATA / "x_train.csv")
 
 def simple_prep():
     """Week-1 baseline: mean imputation + standardization (model.py)."""
